@@ -38,24 +38,24 @@ const ProductPage = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="w-full md:w-1/2 bg-white p-12 md:p-24 flex flex-col justify-center relative overflow-hidden group border-r border-slate-100"
+          className="w-full md:w-1/2 bg-white p-8 xs:p-12 md:p-24 flex flex-col justify-center relative overflow-hidden group border-r border-slate-100"
         >
           <div className="relative z-10 max-w-md mx-auto md:mx-0">
-            <h2 className="text-8xl md:text-[10rem] font-black text-navy/5 mb-[-2rem] md:mb-[-4rem] tracking-tighter select-none">500</h2>
+            <h2 className="text-6xl xs:text-8xl md:text-[10rem] font-black text-navy/5 mb-[-1.5rem] xs:mb-[-2rem] md:mb-[-4rem] tracking-tighter select-none">500</h2>
             <div className="relative">
-              <h3 className="text-5xl md:text-7xl font-black text-navy mb-4 tracking-tighter">500 <span className="text-primary">kW</span></h3>
-              <p className="text-slate-500 font-bold text-xl mb-12">For commercial and backup applications</p>
+              <h3 className="text-4xl xs:text-5xl md:text-7xl font-black text-navy mb-4 tracking-tighter">500 <span className="text-primary">kW</span></h3>
+              <p className="text-slate-500 font-bold text-lg xs:text-xl mb-8 xs:mb-12">For commercial and backup applications</p>
               
-              <ul className="space-y-6 mb-16">
+              <ul className="space-y-4 xs:space-y-6 mb-10 xs:mb-16">
                 {['~1 MWh Capacity', '≥ 90% Efficiency', 'Compact design'].map((feature, i) => (
-                  <li key={i} className="flex items-center space-x-4 text-navy font-bold text-lg">
+                  <li key={i} className="flex items-center space-x-3 xs:space-x-4 text-navy font-bold text-base xs:text-lg">
                     <div className="w-2 h-2 bg-primary rounded-full" />
                     <span>{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              <a href="/#contact" className="inline-flex items-center space-x-4 px-8 py-4 bg-navy text-white rounded-full font-bold hover:bg-primary transition-all duration-300 group/btn">
+              <a href="/#contact" className="w-full xs:w-auto inline-flex items-center justify-center xs:justify-start space-x-4 px-6 xs:px-8 py-3 xs:py-4 bg-navy text-white rounded-full font-bold hover:bg-primary transition-all duration-300 group/btn">
                 <span>View Details</span>
                 <ArrowRight size={20} className="group-hover/btn:translate-x-2 transition-transform" />
               </a>
@@ -63,7 +63,7 @@ const ProductPage = () => {
           </div>
 
           {/* Visual Placeholder */}
-          <div className="absolute bottom-10 right-10 w-64 h-64 opacity-10 grayscale group-hover:grayscale-0 group-hover:opacity-20 transition-all duration-700 group-hover:scale-110">
+          <div className="absolute bottom-6 right-6 xs:bottom-10 xs:right-10 w-48 xs:w-64 h-48 xs:h-64 opacity-5 xs:opacity-10 grayscale group-hover:grayscale-0 group-hover:opacity-20 transition-all duration-700 group-hover:scale-110">
              <img src={commercialImg} alt="500kW BESS" className="w-full h-full object-contain" />
           </div>
         </motion.div>
@@ -73,29 +73,29 @@ const ProductPage = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="w-full md:w-1/2 bg-navy p-12 md:p-24 flex flex-col justify-center relative overflow-hidden group"
+          className="w-full md:w-1/2 bg-navy p-8 xs:p-12 md:p-24 flex flex-col justify-center relative overflow-hidden group"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy to-navy-light opacity-90 transition-opacity duration-500 group-hover:opacity-100"></div>
           
           <div className="relative z-10 max-w-md mx-auto md:mx-0">
-            <div className="inline-block px-4 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-black uppercase tracking-widest mb-8 backdrop-blur-sm">
+            <div className="inline-block px-3 xs:px-4 py-1 rounded-full bg-primary/20 border border-primary/30 text-primary text-[10px] xs:text-xs font-black uppercase tracking-widest mb-6 xs:mb-8 backdrop-blur-sm">
               Recommended / Scalable
             </div>
-            <h2 className="text-8xl md:text-[10rem] font-black text-white/5 mb-[-2rem] md:mb-[-4rem] tracking-tighter select-none">1000</h2>
+            <h2 className="text-6xl xs:text-8xl md:text-[10rem] font-black text-white/5 mb-[-1.5rem] xs:mb-[-2rem] md:mb-[-4rem] tracking-tighter select-none">1000</h2>
             <div className="relative">
-              <h3 className="text-5xl md:text-7xl font-black text-white mb-4 tracking-tighter">1 <span className="text-primary">MW</span></h3>
-              <p className="text-slate-400 font-bold text-xl mb-12">For industrial and large-scale applications</p>
+              <h3 className="text-4xl xs:text-5xl md:text-7xl font-black text-white mb-4 tracking-tighter">1 <span className="text-primary">MW</span></h3>
+              <p className="text-slate-400 font-bold text-lg xs:text-xl mb-8 xs:mb-12">For industrial and large-scale applications</p>
               
-              <ul className="space-y-6 mb-16">
+              <ul className="space-y-4 xs:space-y-6 mb-10 xs:mb-16">
                 {['2–4 MWh Capacity', '≥ 90–95% Efficiency', 'High scalability'].map((feature, i) => (
-                  <li key={i} className="flex items-center space-x-4 text-white font-bold text-lg">
+                  <li key={i} className="flex items-center space-x-3 xs:space-x-4 text-white font-bold text-base xs:text-lg">
                     <div className="w-2 h-2 bg-primary rounded-full" />
                     <span>{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              <a href="/#contact" className="inline-flex items-center space-x-4 px-8 py-4 bg-primary text-white rounded-full font-bold hover:bg-white hover:text-navy transition-all duration-300 group/btn">
+              <a href="/#contact" className="w-full xs:w-auto inline-flex items-center justify-center xs:justify-start space-x-4 px-6 xs:px-8 py-3 xs:py-4 bg-primary text-white rounded-full font-bold hover:bg-white hover:text-navy transition-all duration-300 group/btn">
                 <span>View Details</span>
                 <ArrowRight size={20} className="group-hover/btn:translate-x-2 transition-transform" />
               </a>
@@ -103,7 +103,7 @@ const ProductPage = () => {
           </div>
 
           {/* Visual Placeholder */}
-          <div className="absolute bottom-10 right-10 w-80 h-80 opacity-10 grayscale group-hover:grayscale-0 group-hover:opacity-30 transition-all duration-700 group-hover:scale-110">
+          <div className="absolute bottom-6 right-6 xs:bottom-10 xs:right-10 w-56 xs:w-80 h-56 xs:h-80 opacity-5 xs:opacity-10 grayscale group-hover:grayscale-0 group-hover:opacity-30 transition-all duration-700 group-hover:scale-110">
              <img src={industrialImg} alt="1MW BESS" className="w-full h-full object-contain" />
           </div>
         </motion.div>

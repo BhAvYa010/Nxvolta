@@ -99,59 +99,59 @@ const ContactForm = () => {
                 </button>
               </div>
             ) : (
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-navy uppercase tracking-wider">Your Name</label>
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+                <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+                  <div className="space-y-3">
+                    <label className="text-xs sm:text-sm font-black text-navy uppercase tracking-[0.15em]">Your Full Name</label>
                     <input
                       type="text"
                       name="user_name"
                       required
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-navy focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder-slate-400 font-medium"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 sm:py-5 text-navy focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder-slate-400 font-bold text-base"
                       placeholder="John Doe"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-navy uppercase tracking-wider">Email Address</label>
+                  <div className="space-y-3">
+                    <label className="text-xs sm:text-sm font-black text-navy uppercase tracking-[0.15em]">Email Address</label>
                     <input
                       type="email"
                       name="user_email"
                       required
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-navy focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder-slate-400 font-medium"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 sm:py-5 text-navy focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder-slate-400 font-bold text-base"
                       placeholder="john@example.com"
                     />
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-navy uppercase tracking-wider">Phone Number</label>
+                <div className="space-y-3">
+                  <label className="text-xs sm:text-sm font-black text-navy uppercase tracking-[0.15em]">Phone Number</label>
                   <input
                     type="tel"
                     name="user_phone"
                     required
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-navy focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder-slate-400 font-medium"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 sm:py-5 text-navy focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder-slate-400 font-bold text-base"
                     placeholder="+91 98765 43210"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-navy uppercase tracking-wider">Message</label>
+                <div className="space-y-3">
+                  <label className="text-xs sm:text-sm font-black text-navy uppercase tracking-[0.15em]">Project Message</label>
                   <textarea
                     name="message"
                     required
                     rows="4"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-navy focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none placeholder-slate-400 font-medium"
-                    placeholder="Tell us about your requirements..."
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 sm:py-5 text-navy focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all resize-none placeholder-slate-400 font-bold text-base"
+                    placeholder="Tell us about your energy requirements..."
                   />
                 </div>
 
                 <button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className={`btn-primary w-full flex items-center justify-center space-x-3 py-5 rounded-xl text-lg transition-all ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:scale-[1.02]'}`}
+                  className={`btn-primary w-full flex items-center justify-center space-x-3 py-5 sm:py-6 rounded-2xl text-lg sm:text-xl font-black transition-all ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:scale-[1.02] active:scale-[0.98]'}`}
                 >
-                  <span>{isSubmitting ? 'Sending...' : 'Send Enquiry Now'}</span>
-                  {!isSubmitting && <Send size={20} />}
+                  <span className="uppercase tracking-widest">{isSubmitting ? 'Sending...' : 'Send Enquiry Now'}</span>
+                  {!isSubmitting && <Send size={24} />}
                 </button>
                 
                 <p className="text-center text-xs text-slate-500 font-medium">

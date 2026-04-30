@@ -29,11 +29,16 @@ html {
 }
 
 @layer base {
-  body {
-    @apply bg-white text-navy;
+  html, body {
+    @apply bg-white text-navy overflow-x-hidden;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply text-navy font-bold tracking-tight;
+  }
+  img, video {
+    @apply max-w-full h-auto;
   }
 }
 

@@ -58,23 +58,24 @@ const Hero = () => {
             transition={{ duration: 1 }}
             className="absolute inset-0 w-full h-full"
           >
-            {/* Background Image */}
+            {/* Background Image with improved visibility */}
             <div 
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${slides[current].image})` }}
             >
-              {/* More intense premium overlay for text readability */}
-              <div className="absolute inset-0 bg-navy/60 backdrop-blur-[2px]"></div>
-              <div className="absolute inset-0 bg-gradient-to-b from-navy/40 via-transparent to-navy/80"></div>
+              {/* Lighter overlay for better image clarity */}
+              <div className="absolute inset-0 bg-navy/30"></div>
+              {/* Vertical gradient to anchor the text without hiding the image */}
+              <div className="absolute inset-0 bg-gradient-to-b from-navy/50 via-transparent to-navy/60"></div>
             </div>
 
-            {/* Content */}
+            {/* Content with text protection */}
             <div className="relative h-full container-custom flex flex-col items-center justify-center text-center z-10 pt-20">
               <motion.p
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
-                className="text-primary text-lg md:text-2xl font-bold mb-4 tracking-[0.2em] uppercase"
+                className="text-primary text-lg md:text-2xl font-black mb-4 tracking-[0.3em] uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
               >
                 {slides[current].subtitle}
               </motion.p>
@@ -83,7 +84,7 @@ const Hero = () => {
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
-                className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 tracking-tighter text-white"
+                className="text-5xl md:text-7xl lg:text-9xl font-black mb-8 tracking-tighter text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]"
               >
                 {slides[current].title}
               </motion.h1>
@@ -92,7 +93,7 @@ const Hero = () => {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                className="text-white/80 text-lg md:text-xl max-w-2xl mb-10 hidden md:block font-light leading-relaxed"
+                className="text-white text-lg md:text-xl max-w-2xl mb-10 hidden md:block font-bold leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
               >
                 {slides[current].description}
               </motion.p>
@@ -103,7 +104,7 @@ const Hero = () => {
                 transition={{ delay: 0.8, duration: 0.8 }}
                 className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
               >
-                <a href="#solutions" className="px-10 py-4 bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy transition-all duration-300 rounded-full font-bold flex items-center space-x-2 backdrop-blur-sm">
+                <a href="#solutions" className="px-10 py-4 bg-white/10 border-2 border-white text-white hover:bg-white hover:text-navy transition-all duration-300 rounded-full font-black uppercase tracking-widest text-sm flex items-center space-x-2 backdrop-blur-md shadow-xl">
                   <span>Explore Solutions</span>
                   <ArrowRight size={20} />
                 </a>

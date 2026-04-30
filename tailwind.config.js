@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '320px',
+      },
       colors: {
         primary: {
           DEFAULT: '#10b981', // Emerald-500 (Green)
