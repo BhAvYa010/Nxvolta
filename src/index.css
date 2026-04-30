@@ -7,9 +7,9 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #0f172a;
+  color-scheme: light;
+  color: #0A192F; /* Navy Blue text by default */
+  background-color: #ffffff; /* White background */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -30,7 +30,10 @@ html {
 
 @layer base {
   body {
-    @apply bg-dark text-slate-100;
+    @apply bg-white text-navy;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-navy font-bold tracking-tight;
   }
 }
 
@@ -40,7 +43,7 @@ html {
   }
   
   .glass-card {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl;
+    @apply bg-white border border-slate-200 shadow-xl shadow-slate-200/40 rounded-2xl;
   }
   
   .btn-primary {
@@ -52,6 +55,6 @@ html {
   }
 
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-navy;
   }
 }

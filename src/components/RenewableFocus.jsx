@@ -1,12 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Sun, CloudLightning, Cpu, BarChart3 } from 'lucide-react';
-import renewableImg from '../assets/images/renewable-ecosystem.jpg';
 
 const RenewableFocus = () => {
   const focuses = [
     {
-      icon: <Sun className="w-8 h-8 text-yellow-400" />,
+      icon: <Sun className="w-8 h-8 text-yellow-500" />,
       title: "Solar Integration",
       desc: "Seamlessly integrate solar PV systems with storage to capture every drop of sunshine."
     },
@@ -18,7 +17,7 @@ const RenewableFocus = () => {
     {
       icon: <Cpu className="w-8 h-8 text-secondary" />,
       title: "Smart Optimization",
-      desc: "AI-driven algorithms to manage energy flow and maximize system lifespan."
+      desc: "Software-driven energy management to optimize performance and extend system lifespan."
     },
     {
       icon: <BarChart3 className="w-8 h-8 text-accent" />,
@@ -28,47 +27,32 @@ const RenewableFocus = () => {
   ];
 
   return (
-    <section className="py-24">
+    <section className="py-24 bg-slate-50 relative overflow-hidden">
       <div className="container-custom">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          <div className="lg:w-1/2">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-6">Contributing to the <span className="text-primary">Renewable Ecosystem</span></h2>
-            <p className="text-slate-400 text-lg mb-8">
-              At nxvolta, we don't just store energy; we optimize the entire renewable lifecycle. By bridging the gap between generation and consumption, we enable a more resilient and sustainable power infrastructure.
-            </p>
-            <div className="grid sm:grid-cols-2 gap-6">
-              {focuses.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex flex-col"
-                >
-                  <div className="mb-4">{item.icon}</div>
-                  <h4 className="font-bold text-xl mb-2">{item.title}</h4>
-                  <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-          
-          <div className="lg:w-1/2 relative">
-            <div className="aspect-square glass-card overflow-hidden group">
-               <div 
-                 className="absolute inset-0 bg-cover bg-center opacity-60 group-hover:scale-105 transition-transform duration-700"
-                 style={{ backgroundImage: `url(${renewableImg})` }}
-               ></div>
-               <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent"></div>
-               <div className="absolute bottom-8 left-8 right-8">
-                 <p className="text-white font-bold text-2xl mb-2">Sustainable Energy Future</p>
-                 <p className="text-slate-300 text-sm italic">"The future of energy is not just green, it's stored and smart."</p>
-               </div>
-            </div>
-            {/* Decorative circles */}
-            <div className="absolute -z-10 -bottom-10 -right-10 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
-          </div>
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <h2 className="text-3xl lg:text-5xl font-black mb-6 text-navy">Powering a Resilient <span className="text-primary">Ecosystem</span></h2>
+          <p className="text-slate-600 text-lg leading-relaxed font-medium">
+            At NXVOLTA, we provide advanced battery energy storage systems that store energy and ensure it is available whenever and wherever it’s needed. By bridging the gap between generation and consumption, we enable a more resilient and sustainable power infrastructure.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {focuses.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="glass-card p-8 hover:-translate-y-2 transition-transform duration-300"
+            >
+              <div className="bg-slate-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+                {item.icon}
+              </div>
+              <h4 className="font-bold text-xl mb-3 text-navy">{item.title}</h4>
+              <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

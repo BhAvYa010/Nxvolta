@@ -8,24 +8,29 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#10b981', // Emerald-500
-          dark: '#059669',    // Emerald-600
-          light: '#34d399',   // Emerald-400
+          DEFAULT: '#10b981', // Emerald-500 (Green)
+          dark: '#059669',
+          light: '#34d399',
+        },
+        navy: {
+          DEFAULT: '#0A192F', // Deep Navy Blue
+          light: '#112240',
+          dark: '#020C1B',
         },
         secondary: {
-          DEFAULT: '#3b82f6', // Blue-500
-          dark: '#2563eb',    // Blue-600
-          light: '#60a5fa',   // Blue-400
+          DEFAULT: '#3b82f6',
+          dark: '#2563eb',
+          light: '#60a5fa',
         },
         accent: {
-          DEFAULT: '#0ea5e9', // Sky-500
-          dark: '#0284c7',    // Sky-600
-          light: '#38bdf8',   // Sky-400
+          DEFAULT: '#0ea5e9',
+          dark: '#0284c7',
+          light: '#38bdf8',
         },
         dark: {
-          DEFAULT: '#0f172a', // Slate-900
-          soft: '#1e293b',    // Slate-800
-          lighter: '#334155', // Slate-700
+          DEFAULT: '#0f172a',
+          soft: '#1e293b',
+          lighter: '#334155',
         }
       },
       fontFamily: {

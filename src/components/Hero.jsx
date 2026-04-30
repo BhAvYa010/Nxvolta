@@ -48,7 +48,7 @@ const Hero = () => {
   return (
     <section id="home" className="relative h-screen min-h-[600px] w-full overflow-hidden">
       {/* Slider */}
-      <div className="absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 w-full h-full bg-navy">
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
@@ -63,25 +63,27 @@ const Hero = () => {
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${slides[current].image})` }}
             >
-              <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+              {/* More intense premium overlay for text readability */}
+              <div className="absolute inset-0 bg-navy/60 backdrop-blur-[2px]"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-navy/40 via-transparent to-navy/80"></div>
             </div>
 
             {/* Content */}
-            <div className="relative h-full container-custom flex flex-col items-center justify-center text-center">
+            <div className="relative h-full container-custom flex flex-col items-center justify-center text-center z-10 pt-20">
               <motion.p
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
-                className="text-white text-xl md:text-3xl lg:text-4xl font-medium mb-4 tracking-wide"
+                className="text-primary text-lg md:text-2xl font-bold mb-4 tracking-[0.2em] uppercase"
               >
                 {slides[current].subtitle}
               </motion.p>
               
               <motion.h1
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
-                className="text-5xl md:text-7xl lg:text-9xl font-black mb-8 tracking-tighter text-primary"
+                className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 tracking-tighter text-white"
               >
                 {slides[current].title}
               </motion.h1>
@@ -90,7 +92,7 @@ const Hero = () => {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                className="text-slate-200 text-lg md:text-xl max-w-2xl mb-10 hidden md:block"
+                className="text-white/80 text-lg md:text-xl max-w-2xl mb-10 hidden md:block font-light leading-relaxed"
               >
                 {slides[current].description}
               </motion.p>
@@ -101,12 +103,9 @@ const Hero = () => {
                 transition={{ delay: 0.8, duration: 0.8 }}
                 className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
               >
-                <a href="#solutions" className="btn-primary flex items-center justify-center space-x-2 px-8 py-4 text-lg">
+                <a href="#solutions" className="px-10 py-4 bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy transition-all duration-300 rounded-full font-bold flex items-center space-x-2 backdrop-blur-sm">
                   <span>Explore Solutions</span>
                   <ArrowRight size={20} />
-                </a>
-                <a href="#contact" className="btn-secondary bg-white/10 backdrop-blur-md border-white/30 text-white hover:bg-white hover:text-dark px-8 py-4 text-lg">
-                  Send Enquiry
                 </a>
               </motion.div>
             </div>
@@ -117,14 +116,14 @@ const Hero = () => {
       {/* Navigation Controls */}
       <button 
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-black/20 hover:bg-primary text-white backdrop-blur-sm transition-all duration-300 z-20 group"
+        className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/10 hover:bg-white hover:text-navy text-white backdrop-blur-sm transition-all duration-300 z-20 group border border-white/20"
       >
         <ChevronLeft size={32} className="group-hover:-translate-x-1 transition-transform" />
       </button>
 
       <button 
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-black/20 hover:bg-primary text-white backdrop-blur-sm transition-all duration-300 z-20 group"
+        className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/10 hover:bg-white hover:text-navy text-white backdrop-blur-sm transition-all duration-300 z-20 group border border-white/20"
       >
         <ChevronRight size={32} className="group-hover:translate-x-1 transition-transform" />
       </button>
@@ -135,13 +134,13 @@ const Hero = () => {
           <button
             key={index}
             onClick={() => setCurrent(index)}
-            className={`h-1.5 transition-all duration-500 rounded-full ${index === current ? 'w-12 bg-primary' : 'w-6 bg-white/30'}`}
+            className={`h-1.5 transition-all duration-500 rounded-full ${index === current ? 'w-12 bg-primary' : 'w-6 bg-white/50'}`}
           ></button>
         ))}
       </div>
 
       {/* Bottom Gradient for Smooth Transition */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-dark to-transparent z-10"></div>
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent z-10"></div>
     </section>
   );
 };

@@ -1,86 +1,144 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Battery, Package, Zap } from 'lucide-react';
-
-import commercialImg from '../assets/images/commercial-unit.jpg';
-import industrialImg from '../assets/images/industrial-container.jpg';
-import residentialImg from '../assets/images/residential-battery.jpg';
+import { MonitorCheck, Zap, Settings, Truck, ArrowRight, Download, FileText } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const ProductCatalog = () => {
-  const products = [
+  const deliveryFeatures = [
     {
-      title: "Commercial BESS",
-      desc: "Compact and powerful storage for small to medium enterprises. Scalable from 50kWh to 500kWh.",
-      features: ["Modular design", "Outdoor rated", "Smart cooling"],
-      image: commercialImg,
-      color: "from-emerald-500/20 to-teal-500/20"
+      icon: <MonitorCheck className="w-8 h-8 text-primary" />,
+      title: "Smart Monitoring",
+      desc: "Cloud-based dashboard for real-time tracking, health diagnostics, and performance reports."
     },
     {
-      title: "Industrial BESS",
-      desc: "Containerized solutions for large-scale manufacturing and utility applications. MW-scale capacity.",
-      features: ["Active balance BMS", "Fire suppression", "High voltage ready"],
-      image: industrialImg,
-      color: "from-blue-500/20 to-indigo-500/20"
+      icon: <Zap className="w-8 h-8 text-secondary" />,
+      title: "High Efficiency",
+      desc: "Maximum energy conversion with minimal round-trip losses using top-tier battery chemistry."
     },
     {
-      title: "Residential Storage",
-      desc: "Sleek wall-mounted batteries for smart homes. Optimize solar usage and ensure backup.",
-      features: ["Plug & Play", "Silent operation", "Mobile app sync"],
-      image: residentialImg,
-      color: "from-sky-500/20 to-cyan-500/20"
+      icon: <Settings className="w-8 h-8 text-accent" />,
+      title: "Custom Deployments",
+      desc: "Modular designs tailored to your specific voltage, power, and energy requirements."
+    },
+    {
+      icon: <Truck className="w-8 h-8 text-green-500" />,
+      title: "End-to-End Service",
+      desc: "From initial site assessment and design to installation, testing, and lifetime maintenance."
     }
   ];
 
   return (
-    <section id="products" className="py-24">
+    <section id="products" className="py-24 bg-white relative">
       <div className="container-custom">
+        {/* Product Showcase Table */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-5xl font-bold mb-4">Product <span className="text-primary">Showcase</span></h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
-            Engineered for reliability. Built for the future. Discover our range of storage solutions.
+          <h2 className="text-3xl lg:text-5xl font-black mb-4 text-navy">Product <span className="text-primary">Showcase</span></h2>
+          <p className="text-slate-600 max-w-2xl mx-auto text-lg font-medium">
+            Compare our flagship industrial and commercial storage solutions.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {products.map((product, index) => (
+        <div className="max-w-5xl mx-auto glass-card overflow-hidden mb-24 border-navy/10 shadow-2xl">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-navy text-white text-lg">
+                  <th className="p-8 font-bold w-1/3 border-b border-white/10">Features</th>
+                  <th className="p-8 font-black text-center border-l border-white/10 w-1/3 text-primary text-2xl tracking-tighter">500 kW</th>
+                  <th className="p-8 font-black text-center border-l border-white/10 w-1/3 text-primary text-2xl tracking-tighter">1 MW</th>
+                </tr>
+              </thead>
+              <tbody className="text-navy divide-y divide-slate-200 bg-white">
+                <tr className="hover:bg-slate-50/50 transition-colors">
+                  <td className="p-6 font-bold text-lg">Power</td>
+                  <td className="p-6 text-center border-l border-slate-200 font-medium">500 kW</td>
+                  <td className="p-6 text-center border-l border-slate-200 font-medium">1 MW</td>
+                </tr>
+                <tr className="hover:bg-slate-50/50 transition-colors">
+                  <td className="p-6 font-bold text-lg">Energy Capacity</td>
+                  <td className="p-6 text-center border-l border-slate-200 font-medium">~1 MWh</td>
+                  <td className="p-6 text-center border-l border-slate-200 font-medium">~2–4 MWh</td>
+                </tr>
+                <tr className="hover:bg-slate-50/50 transition-colors">
+                  <td className="p-6 font-bold text-lg">Efficiency</td>
+                  <td className="p-6 text-center border-l border-slate-200 font-medium">≥ 90%</td>
+                  <td className="p-6 text-center border-l border-slate-200 font-medium">≥ 90–95%</td>
+                </tr>
+                <tr className="hover:bg-slate-50/50 transition-colors">
+                  <td className="p-6 font-bold text-lg">Use Case</td>
+                  <td className="p-6 text-center border-l border-slate-200 font-medium">Commercial / Backup</td>
+                  <td className="p-6 text-center border-l border-slate-200 font-medium">Industrial / Utility</td>
+                </tr>
+                <tr className="hover:bg-slate-50/50 transition-colors">
+                  <td className="p-6 font-bold text-lg">Scalability</td>
+                  <td className="p-6 text-center border-l border-slate-200 font-medium">Limited</td>
+                  <td className="p-6 text-center border-l border-slate-200 font-black text-primary">High</td>
+                </tr>
+                
+                {/* Actions Row */}
+                <tr className="bg-slate-50/80">
+                  <td className="p-6"></td>
+                  <td className="p-8 text-center border-l border-slate-200 space-y-4">
+                    <Link to="/products" className="inline-flex items-center space-x-2 text-navy font-black hover:text-primary transition-colors mb-6 text-lg">
+                      <span>Know More</span>
+                      <ArrowRight size={20} />
+                    </Link>
+                    <div className="space-y-3">
+                      <a href="/#contact" className="w-full py-4 bg-primary text-white rounded-xl font-bold flex items-center justify-center space-x-2 hover:bg-primary-dark transition-all shadow-lg shadow-primary/20">
+                        <Zap size={18} />
+                        <span>Get Best Quote</span>
+                      </a>
+                      <a href="/#contact" className="w-full py-4 bg-white border-2 border-navy/10 text-navy rounded-xl font-bold flex items-center justify-center space-x-2 hover:bg-navy hover:text-white transition-all">
+                        <Download size={18} />
+                        <span>Download Brochure</span>
+                      </a>
+                    </div>
+                  </td>
+                  <td className="p-8 text-center border-l border-slate-200 space-y-4">
+                    <Link to="/products" className="inline-flex items-center space-x-2 text-navy font-black hover:text-primary transition-colors mb-6 text-lg">
+                      <span>Know More</span>
+                      <ArrowRight size={20} />
+                    </Link>
+                    <div className="space-y-3">
+                      <a href="/#contact" className="w-full py-4 bg-primary text-white rounded-xl font-bold flex items-center justify-center space-x-2 hover:bg-primary-dark transition-all shadow-lg shadow-primary/20">
+                        <Zap size={18} />
+                        <span>Get Best Quote</span>
+                      </a>
+                      <a href="/#contact" className="w-full py-4 bg-white border-2 border-navy/10 text-navy rounded-xl font-bold flex items-center justify-center space-x-2 hover:bg-navy hover:text-white transition-all">
+                        <Download size={18} />
+                        <span>Download Brochure</span>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Features Below Product Table */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl lg:text-4xl font-black mb-4 text-navy">Why Choose <span className="text-primary">NXVOLTA</span></h2>
+          <p className="text-slate-600 max-w-2xl mx-auto text-lg">
+            Beyond hardware, we provide a complete energy ecosystem designed for longevity and performance.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {deliveryFeatures.map((value, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="glass-card overflow-hidden flex flex-col h-full hover:border-primary/50 transition-colors group"
+              className="bg-slate-50 p-8 rounded-3xl flex flex-col items-center text-center border border-slate-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
             >
-              {/* Product Image */}
-              <div className={`aspect-[4/3] relative overflow-hidden`}>
-                 <div 
-                   className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                   style={{ backgroundImage: `url(${product.image})` }}
-                 ></div>
-                 <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-40 group-hover:opacity-20 transition-opacity`}></div>
-                 <div className="absolute top-4 right-4 bg-dark/60 backdrop-blur-md p-2 rounded-lg border border-white/10">
-                   <Battery className="w-5 h-5 text-primary" />
-                 </div>
+              <div className="bg-white p-5 rounded-2xl shadow-sm mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                {value.icon}
               </div>
-              
-              <div className="p-8 flex-grow flex flex-col">
-                <h3 className="text-2xl font-bold mb-3">{product.title}</h3>
-                <p className="text-slate-500 text-sm mb-6 flex-grow">{product.desc}</p>
-                
-                <ul className="space-y-2 mb-8">
-                  {product.features.map((feat, i) => (
-                    <li key={i} className="flex items-center space-x-2 text-sm text-slate-300">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <button className="btn-secondary w-full py-2 flex items-center justify-center space-x-2">
-                   <span>View Details</span>
-                   <Package size={16} />
-                </button>
-              </div>
+              <h3 className="text-xl font-black mb-3 text-navy">{value.title}</h3>
+              <p className="text-slate-600 text-sm leading-relaxed font-medium">{value.desc}</p>
             </motion.div>
           ))}
         </div>
