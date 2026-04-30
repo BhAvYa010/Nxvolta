@@ -34,22 +34,16 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex flex-1 justify-end items-center space-x-10">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               to={link.href}
-              className={`${scrolled || location.pathname !== '/' ? 'text-slate-600 hover:text-primary' : 'text-slate-200 hover:text-white'} transition-colors font-medium`}
+              className={`${scrolled || location.pathname !== '/' ? 'text-slate-600 hover:text-primary' : 'text-slate-200 hover:text-white'} transition-colors font-bold uppercase tracking-widest text-sm`}
             >
               {link.name}
             </Link>
           ))}
-        </div>
-
-        <div className="hidden md:block">
-          <a href="/#contact" className="btn-primary py-2 px-5 text-sm">
-            Enquire Now
-          </a>
         </div>
 
         {/* Mobile Toggle */}

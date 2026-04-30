@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Zap, Download } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import commercialImg from '../assets/images/commercial-unit.jpg';
 import industrialImg from '../assets/images/industrial-container.jpg';
 
@@ -24,7 +25,7 @@ const ProductPage = () => {
               transition={{ delay: 0.1 }}
               className="text-slate-500 text-xl font-medium"
             >
-              Designed for different scales of energy demand. Optimized for performance and longevity.
+              Tailored solutions for every scale of energy demand. Optimized for performance, longevity, and sustainability.
             </motion.p>
           </div>
         </div>
@@ -44,10 +45,10 @@ const ProductPage = () => {
             <h2 className="text-6xl xs:text-8xl md:text-[10rem] font-black text-navy/5 mb-[-1.5rem] xs:mb-[-2rem] md:mb-[-4rem] tracking-tighter select-none">500</h2>
             <div className="relative">
               <h3 className="text-4xl xs:text-5xl md:text-7xl font-black text-navy mb-4 tracking-tighter">500 <span className="text-primary">kW</span></h3>
-              <p className="text-slate-500 font-bold text-lg xs:text-xl mb-8 xs:mb-12">For commercial and backup applications</p>
+              <p className="text-slate-500 font-bold text-lg xs:text-xl mb-8 xs:mb-12 uppercase tracking-wide">For Commercial & Backup Solutions</p>
               
               <ul className="space-y-4 xs:space-y-6 mb-10 xs:mb-16">
-                {['~1 MWh Capacity', '≥ 90% Efficiency', 'Compact design'].map((feature, i) => (
+                {['~1 MWh Energy Capacity', '≥ 90% Round-trip Efficiency', 'Modular & Compact Design', 'Seamless Grid Integration'].map((feature, i) => (
                   <li key={i} className="flex items-center space-x-3 xs:space-x-4 text-navy font-bold text-base xs:text-lg">
                     <div className="w-2 h-2 bg-primary rounded-full" />
                     <span>{feature}</span>
@@ -55,10 +56,16 @@ const ProductPage = () => {
                 ))}
               </ul>
 
-              <a href="/#contact" className="w-full xs:w-auto inline-flex items-center justify-center xs:justify-start space-x-4 px-6 xs:px-8 py-3 xs:py-4 bg-navy text-white rounded-full font-bold hover:bg-primary transition-all duration-300 group/btn">
-                <span>View Details</span>
-                <ArrowRight size={20} className="group-hover/btn:translate-x-2 transition-transform" />
-              </a>
+              <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+                <Link to="/?intent=quote&product=500kw#contact" className="inline-flex items-center justify-center space-x-3 px-8 py-4 bg-navy text-white rounded-xl font-black hover:bg-primary transition-all duration-300 shadow-xl shadow-navy/10 uppercase tracking-widest text-xs">
+                  <Zap size={18} />
+                  <span>Get Best Quote</span>
+                </Link>
+                <Link to="/?intent=brochure&product=500kw#contact" className="inline-flex items-center justify-center space-x-3 px-8 py-4 bg-white border-2 border-navy/10 text-navy rounded-xl font-black hover:bg-navy hover:text-white transition-all duration-300 uppercase tracking-widest text-xs">
+                  <Download size={18} />
+                  <span>Download Brochure</span>
+                </Link>
+              </div>
             </div>
           </div>
 
@@ -79,15 +86,15 @@ const ProductPage = () => {
           
           <div className="relative z-10 max-w-md mx-auto md:mx-0">
             <div className="inline-block px-3 xs:px-4 py-1 rounded-full bg-primary/20 border border-primary/30 text-primary text-[10px] xs:text-xs font-black uppercase tracking-widest mb-6 xs:mb-8 backdrop-blur-sm">
-              Recommended / Scalable
+              Industrial / Scale-Ready
             </div>
             <h2 className="text-6xl xs:text-8xl md:text-[10rem] font-black text-white/5 mb-[-1.5rem] xs:mb-[-2rem] md:mb-[-4rem] tracking-tighter select-none">1000</h2>
             <div className="relative">
               <h3 className="text-4xl xs:text-5xl md:text-7xl font-black text-white mb-4 tracking-tighter">1 <span className="text-primary">MW</span></h3>
-              <p className="text-slate-400 font-bold text-lg xs:text-xl mb-8 xs:mb-12">For industrial and large-scale applications</p>
+              <p className="text-slate-400 font-bold text-lg xs:text-xl mb-8 xs:mb-12 uppercase tracking-wide">For Industrial & Utility Infrastructure</p>
               
               <ul className="space-y-4 xs:space-y-6 mb-10 xs:mb-16">
-                {['2–4 MWh Capacity', '≥ 90–95% Efficiency', 'High scalability'].map((feature, i) => (
+                {['2–4 MWh High Capacity', '≥ 90–95% Peak Efficiency', 'High Power Scalability', 'Advanced Thermal Management'].map((feature, i) => (
                   <li key={i} className="flex items-center space-x-3 xs:space-x-4 text-white font-bold text-base xs:text-lg">
                     <div className="w-2 h-2 bg-primary rounded-full" />
                     <span>{feature}</span>
@@ -95,10 +102,16 @@ const ProductPage = () => {
                 ))}
               </ul>
 
-              <a href="/#contact" className="w-full xs:w-auto inline-flex items-center justify-center xs:justify-start space-x-4 px-6 xs:px-8 py-3 xs:py-4 bg-primary text-white rounded-full font-bold hover:bg-white hover:text-navy transition-all duration-300 group/btn">
-                <span>View Details</span>
-                <ArrowRight size={20} className="group-hover/btn:translate-x-2 transition-transform" />
-              </a>
+              <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+                <Link to="/?intent=quote&product=1mw#contact" className="inline-flex items-center justify-center space-x-3 px-8 py-4 bg-primary text-white rounded-xl font-black hover:bg-white hover:text-navy transition-all duration-300 shadow-xl shadow-primary/20 uppercase tracking-widest text-xs">
+                  <Zap size={18} />
+                  <span>Get Best Quote</span>
+                </Link>
+                <Link to="/?intent=brochure&product=1mw#contact" className="inline-flex items-center justify-center space-x-3 px-8 py-4 bg-white/10 border-2 border-white/20 text-white rounded-xl font-black hover:bg-white hover:text-navy transition-all duration-300 uppercase tracking-widest text-xs backdrop-blur-sm">
+                  <Download size={18} />
+                  <span>Download Brochure</span>
+                </Link>
+              </div>
             </div>
           </div>
 

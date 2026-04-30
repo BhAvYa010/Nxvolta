@@ -79,41 +79,17 @@ const ProductCatalog = () => {
                   {/* Actions Row */}
                   <tr className="bg-slate-50/80">
                     <td className="p-4 sm:p-6"></td>
-                    <td className="p-4 sm:p-8 text-center border-l border-slate-200">
-                      <div className="flex flex-col space-y-4 items-center">
-                        <Link to="/products" className="inline-flex items-center space-x-2 text-navy font-black hover:text-primary transition-colors text-base sm:text-lg">
-                          <span>Know More</span>
-                          <ArrowRight size={18} />
-                        </Link>
-                        <div className="w-full space-y-3">
-                          <a href="/#contact" className="w-full py-3 sm:py-4 bg-primary text-white rounded-xl font-bold flex items-center justify-center space-x-2 hover:bg-primary-dark transition-all shadow-lg shadow-primary/20 text-xs sm:text-sm">
-                            <Zap size={16} />
-                            <span>Get Best Quote</span>
-                          </a>
-                          <a href="/#contact" className="w-full py-3 sm:py-4 bg-white border-2 border-navy/10 text-navy rounded-xl font-bold flex items-center justify-center space-x-2 hover:bg-navy hover:text-white transition-all text-xs sm:text-sm">
-                            <Download size={16} />
-                            <span>Brochure</span>
-                          </a>
-                        </div>
-                      </div>
+                    <td className="p-8 text-center border-l border-slate-200">
+                      <Link to="/products" className="inline-flex items-center space-x-2 text-navy font-black hover:text-primary transition-colors text-lg uppercase tracking-tighter">
+                        <span>View System Details</span>
+                        <ArrowRight size={20} />
+                      </Link>
                     </td>
-                    <td className="p-4 sm:p-8 text-center border-l border-slate-200">
-                      <div className="flex flex-col space-y-4 items-center">
-                        <Link to="/products" className="inline-flex items-center space-x-2 text-navy font-black hover:text-primary transition-colors text-base sm:text-lg">
-                          <span>Know More</span>
-                          <ArrowRight size={18} />
-                        </Link>
-                        <div className="w-full space-y-3">
-                          <a href="/#contact" className="w-full py-3 sm:py-4 bg-primary text-white rounded-xl font-bold flex items-center justify-center space-x-2 hover:bg-primary-dark transition-all shadow-lg shadow-primary/20 text-xs sm:text-sm">
-                            <Zap size={16} />
-                            <span>Get Best Quote</span>
-                          </a>
-                          <a href="/#contact" className="w-full py-3 sm:py-4 bg-white border-2 border-navy/10 text-navy rounded-xl font-bold flex items-center justify-center space-x-2 hover:bg-navy hover:text-white transition-all text-xs sm:text-sm">
-                            <Download size={16} />
-                            <span>Brochure</span>
-                          </a>
-                        </div>
-                      </div>
+                    <td className="p-8 text-center border-l border-slate-200">
+                      <Link to="/products" className="inline-flex items-center space-x-2 text-navy font-black hover:text-primary transition-colors text-lg uppercase tracking-tighter">
+                        <span>View System Details</span>
+                        <ArrowRight size={20} />
+                      </Link>
                     </td>
                   </tr>
                 </tbody>
