@@ -24,6 +24,7 @@ const SupplierPage = () => {
   const formRef = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [showOther, setShowOther] = useState(false);
 
   const categories = [
     {
@@ -65,11 +66,16 @@ const SupplierPage = () => {
     { icon: <Truck />, title: "Vendor Listing", desc: "Onboarding into our procurement and supply chain." }
   ];
 
+  const handleCategoryChange = (e) => {
+    if (e.target.value === 'Other') {
+      setShowOther(true);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // EmailJS Configuration (Using the same credentials)
     const SERVICE_ID = "service_cf1az8j"; 
     const TEMPLATE_ID = "template_77uyrdw"; 
     const PUBLIC_KEY = "bC8VYNlR3dl-OGXkb";
@@ -240,7 +246,7 @@ const SupplierPage = () => {
                 <p className="text-slate-600 text-lg font-medium mb-8">
                   Our procurement team will review your submission and contact you for technical evaluation.
                 </p>
-                <button onClick={() => setIsSuccess(false)} className="btn-secondary px-8">Submit Another Product</button>
+                <button onClick={() => { setIsSuccess(false); setShowOther(false); }} className="btn-secondary px-8">Submit Another Product</button>
               </div>
             ) : (
               <>
@@ -252,28 +258,58 @@ const SupplierPage = () => {
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-2">
-                      <label className="text-xs font-black text-navy uppercase tracking-widest">Contact Person</label>
-                      <input type="text" name="contact_name" required className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-navy focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold" />
+                      <label className="text-xs font-black text-navy uppercase tracking-widest">Company Name</label>
+                      <input type="text" name="company_name" required className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-navy focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold" placeholder="e.g. NXVOLTA" />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-xs font-black text-navy uppercase tracking-widest">Product Category</label>
-                      <input type="text" name="contact_name" required className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-navy focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold" />
+                      <label className="text-xs font-black text-navy uppercase tracking-widest">Website</label>
+                      <input type="url" name="website" placeholder="https://nxvolta.com" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-navy focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold" />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-xs font-black text-navy uppercase tracking-widest">Product Category</label>
-                      <select name="category" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-navy focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold appearance-none">
-                        <option>Battery Cells</option>
-                        <option>BMS / EMS</option>
-                        <option>PCS / Inverters</option>
-                        <option>Thermal Systems</option>
-                        <option>Container / BOS</option>
-                      </select>
+                      <label className="text-xs font-black text-navy uppercase tracking-widest">Your Name</label>
+                      <input type="text" name="contact_name" required className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-navy focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold" placeholder="John Doe" />
                     </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-xs font-black text-navy uppercase tracking-widest">Certifications</label>
-                    <input type="text" name="certifications" placeholder="e.g. UL 1973, IEC 62619, BIS" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-navy focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold" />
+                    <div className="space-y-2">
+                      <label className="text-xs font-black text-navy uppercase tracking-widest">Work Email</label>
+                      <input type="email" name="user_email" required className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-navy focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold" placeholder="john@company.com" />
+                    </div>
+                    <div className="space-y-2 md:col-span-2">
+                      <label className="text-xs font-black text-navy uppercase tracking-widest">Product Category</label>
+                      {!showOther ? (
+                        <select 
+                          name="category" 
+                          onChange={handleCategoryChange}
+                          required
+                          className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-navy focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold appearance-none cursor-pointer"
+                        >
+                          <option value="">Select a category</option>
+                          <option>Battery Cells</option>
+                          <option>BMS / EMS</option>
+                          <option>PCS / Inverters</option>
+                          <option>Thermal Systems</option>
+                          <option>Container / BOS</option>
+                          <option value="Other">Other (Please specify)</option>
+                        </select>
+                      ) : (
+                        <div className="relative">
+                          <input 
+                            type="text" 
+                            name="category" 
+                            required 
+                            autoFocus
+                            className="w-full bg-slate-50 border border-primary/50 border-2 rounded-xl px-4 py-4 text-navy focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all font-bold" 
+                            placeholder="Type your product category..." 
+                          />
+                          <button 
+                            type="button"
+                            onClick={() => setShowOther(false)}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-navy text-[10px] font-black uppercase tracking-widest"
+                          >
+                            Back to list
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </div>
 
                   <div className="space-y-2">
@@ -283,7 +319,7 @@ const SupplierPage = () => {
 
                   <div className="space-y-2">
                     <label className="text-xs font-black text-navy uppercase tracking-widest">Product Description</label>
-                    <textarea name="description" rows="4" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-navy focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold resize-none"></textarea>
+                    <textarea name="description" rows="4" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-navy focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold resize-none" placeholder="Details about your product engineering and specifications..."></textarea>
                   </div>
 
                   <button 

@@ -113,11 +113,8 @@ const ProductPage = () => {
               animate={{ opacity: 1, x: 0 }}
               className="text-4xl md:text-7xl font-black text-navy mb-4 tracking-tighter uppercase"
             >
-              The <span className="text-primary italic">Power</span> Lineup
+              Products
             </motion.h1>
-            <p className="text-slate-500 font-bold uppercase tracking-widest text-sm md:text-base">
-              Click a system to reveal detailed technical architecture
-            </p>
           </div>
         </div>
       </div>
