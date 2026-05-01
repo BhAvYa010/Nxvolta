@@ -23,16 +23,11 @@ const ContactForm = () => {
   }, [location]);
 
   const triggerDownload = () => {
-    // Simulate a brochure download
-    // In a real scenario, this would be a link to your hosted PDF file
-    const brochureName = product === '1mw' ? 'NXVOLTA_1MW_BESS_Brochure.txt' : 'NXVOLTA_500kW_BESS_Brochure.txt';
-    const element = document.createElement("a");
-    const file = new Blob([`Thank you for your interest in NXVOLTA ${product === '1mw' ? '1 MW' : '500 kW'} System.\n\nThis is a placeholder for your actual professional PDF brochure.\n\nContact: nxvolta.energy@gmail.com`], {type: 'text/plain'});
-    element.href = URL.createObjectURL(file);
-    element.download = brochureName;
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
+    // Direct download link for the Google Drive file
+    const driveFileId = "1SuGMrsWNTGmzA3jkeu_t4LVNWzwoACvj";
+    const downloadUrl = `https://drive.google.com/uc?id=${driveFileId}&export=download`;
+    
+    window.open(downloadUrl, '_blank');
   };
 
   const handleSubmit = (e) => {
@@ -91,8 +86,8 @@ const ContactForm = () => {
                   <MapPin size={24} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-navy text-lg mb-1 uppercase tracking-tight">Our Office</h4>
-                  <p className="text-slate-600 font-medium">Adajan, Surat, Gujarat, India</p>
+                  <h4 className="font-bold text-navy text-lg mb-1 uppercase tracking-tight">Office:</h4>
+                  <p className="text-slate-600 font-medium">Surat, India</p>
                 </div>
               </div>
 
@@ -103,16 +98,6 @@ const ContactForm = () => {
                 <div>
                   <h4 className="font-bold text-navy text-lg mb-1 uppercase tracking-tight">Email Us</h4>
                   <a href="mailto:nxvolta.energy@gmail.com" className="text-slate-600 hover:text-primary transition-colors font-medium">nxvolta.energy@gmail.com</a>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="bg-primary/10 p-4 rounded-xl text-primary">
-                  <Clock size={24} />
-                </div>
-                <div>
-                  <h4 className="font-bold text-navy text-lg mb-1 uppercase tracking-tight">Working Hours</h4>
-                  <p className="text-slate-600 font-medium">Monday — Saturday: 9 AM – 6 PM</p>
                 </div>
               </div>
             </div>
@@ -165,17 +150,6 @@ const ContactForm = () => {
                       placeholder="john@example.com"
                     />
                   </div>
-                </div>
-
-                <div className="space-y-3">
-                  <label className="text-xs sm:text-sm font-black text-navy uppercase tracking-[0.15em]">Phone Number</label>
-                  <input
-                    type="tel"
-                    name="user_phone"
-                    required
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 sm:py-5 text-navy focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder-slate-400 font-bold text-base"
-                    placeholder="+91 98765 43210"
-                  />
                 </div>
 
                 <div className="space-y-3">

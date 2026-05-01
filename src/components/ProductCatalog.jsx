@@ -1,27 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MonitorCheck, Zap, Settings, Truck, ArrowRight, Download, FileText } from 'lucide-react';
+import { MonitorCheck, Zap, Settings, Truck, ArrowRight, Download } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import BrochureModal from './BrochureModal';
 
 const ProductCatalog = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [activeProduct, setActiveProduct] = useState({ title: '', id: '' });
+
+  const openBrochure = (title, id) => {
+    setActiveProduct({ title, id });
+    setModalOpen(true);
+  };
+
   const deliveryFeatures = [
     {
-      icon: <MonitorCheck className="w-8 h-8 text-primary" />,
+      icon: <MonitorCheck className="w-8 h-8" />,
       title: "Smart Monitoring",
       desc: "Cloud-based dashboard for real-time tracking, health diagnostics, and performance reports."
     },
     {
-      icon: <Zap className="w-8 h-8 text-secondary" />,
+      icon: <Zap className="w-8 h-8" />,
       title: "High Efficiency",
       desc: "Maximum energy conversion with minimal round-trip losses using top-tier battery chemistry."
     },
     {
-      icon: <Settings className="w-8 h-8 text-accent" />,
+      icon: <Settings className="w-8 h-8" />,
       title: "Custom Deployments",
       desc: "Modular designs tailored to your specific voltage, power, and energy requirements."
     },
     {
-      icon: <Truck className="w-8 h-8 text-green-500" />,
+      icon: <Truck className="w-8 h-8" />,
       title: "End-to-End Service",
       desc: "From initial site assessment and design to installation, testing, and lifetime maintenance."
     }
@@ -29,12 +38,19 @@ const ProductCatalog = () => {
 
   return (
     <section id="products" className="py-24 bg-white relative">
+      <BrochureModal 
+        isOpen={modalOpen} 
+        onClose={() => setModalOpen(false)} 
+        productTitle={activeProduct.title}
+        productId={activeProduct.id}
+      />
+
       <div className="container-custom">
         {/* Product Showcase Table */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-5xl font-black mb-4 text-navy">Product <span className="text-primary">Showcase</span></h2>
+          <h2 className="text-3xl lg:text-5xl font-black mb-4 text-navy tracking-tighter uppercase">Product <span className="text-primary">Showcase</span></h2>
           <p className="text-slate-600 max-w-2xl mx-auto text-lg font-medium">
-            Compare our flagship industrial and commercial storage solutions.
+            Compare our flagship industrial energy storage systems.
           </p>
         </div>
 
@@ -44,52 +60,70 @@ const ProductCatalog = () => {
               <table className="min-w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-navy text-white">
-                    <th className="p-4 sm:p-8 font-bold w-1/3 border-b border-white/10 text-xs sm:text-base md:text-lg lg:text-xl">Features</th>
-                    <th className="p-4 sm:p-8 font-black text-center border-l border-white/10 w-1/3 text-primary text-lg sm:text-2xl md:text-3xl tracking-tighter uppercase">500 kW</th>
-                    <th className="p-4 sm:p-8 font-black text-center border-l border-white/10 w-1/3 text-primary text-lg sm:text-2xl md:text-3xl tracking-tighter uppercase">1 MW</th>
+                    <th className="p-4 sm:p-8 font-bold w-1/3 border-b border-white/10 text-xs sm:text-base md:text-lg lg:text-xl uppercase tracking-wider">Specifications</th>
+                    <th className="p-4 sm:p-8 font-black text-center border-l border-white/10 w-1/3 text-primary text-lg sm:text-2xl md:text-3xl tracking-tighter uppercase">1 MWh System</th>
+                    <th className="p-4 sm:p-8 font-black text-center border-l border-white/10 w-1/3 text-primary text-lg sm:text-2xl md:text-3xl tracking-tighter uppercase">5 MWh System</th>
                   </tr>
                 </thead>
-                <tbody className="text-navy divide-y divide-slate-200 bg-white">
+                <tbody className="text-navy divide-y divide-slate-200 bg-white font-medium">
                   <tr className="hover:bg-slate-50/50 transition-colors">
-                    <td className="p-4 sm:p-6 font-bold text-xs sm:text-base md:text-lg">Power</td>
-                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 font-bold text-xs sm:text-lg md:text-xl">500 kW</td>
-                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 font-bold text-xs sm:text-lg md:text-xl">1 MW</td>
+                    <td className="p-4 sm:p-6 font-bold text-xs sm:text-base md:text-lg">Nominal Energy</td>
+                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 font-bold text-xs sm:text-lg md:text-xl">1050 kWh</td>
+                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 font-bold text-xs sm:text-lg md:text-xl">5015 kWh</td>
                   </tr>
                   <tr className="hover:bg-slate-50/50 transition-colors">
-                    <td className="p-4 sm:p-6 font-bold text-xs sm:text-base md:text-lg">Energy Capacity</td>
-                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 font-medium text-xs sm:text-base md:text-lg">~1 MWh</td>
-                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 font-medium text-xs sm:text-base md:text-lg">~2–4 MWh</td>
+                    <td className="p-4 sm:p-6 font-bold text-xs sm:text-base md:text-lg">Cell Type</td>
+                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 text-xs sm:text-base md:text-lg">LFP (314 Ah)</td>
+                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 text-xs sm:text-base md:text-lg">LFP (314 Ah)</td>
                   </tr>
                   <tr className="hover:bg-slate-50/50 transition-colors">
-                    <td className="p-4 sm:p-6 font-bold text-xs sm:text-base md:text-lg">Efficiency</td>
-                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 font-medium text-xs sm:text-base md:text-lg">≥ 90%</td>
-                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 font-medium text-xs sm:text-base md:text-lg">≥ 90–95%</td>
+                    <td className="p-4 sm:p-6 font-bold text-xs sm:text-base md:text-lg">Cooling System</td>
+                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 text-xs sm:text-base md:text-lg">Liquid Cooling</td>
+                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 text-xs sm:text-base md:text-lg">Liquid Cooling</td>
                   </tr>
                   <tr className="hover:bg-slate-50/50 transition-colors">
-                    <td className="p-4 sm:p-6 font-bold text-xs sm:text-base md:text-lg">Use Case</td>
-                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 font-medium text-xs sm:text-base md:text-lg whitespace-nowrap uppercase tracking-tight">Commercial / Backup</td>
-                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 font-medium text-xs sm:text-base md:text-lg whitespace-nowrap uppercase tracking-tight">Industrial / Utility</td>
+                    <td className="p-4 sm:p-6 font-bold text-xs sm:text-base md:text-lg">Cycle Life</td>
+                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 text-xs sm:text-base md:text-lg">&gt; 10,000 Cycles</td>
+                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 text-xs sm:text-base md:text-lg">&gt; 10,000 Cycles</td>
                   </tr>
                   <tr className="hover:bg-slate-50/50 transition-colors">
-                    <td className="p-4 sm:p-6 font-bold text-xs sm:text-base md:text-lg">Scalability</td>
-                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 font-medium text-xs sm:text-base md:text-lg">Limited</td>
-                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 font-black text-primary text-xs sm:text-lg md:text-xl uppercase">High</td>
+                    <td className="p-4 sm:p-6 font-bold text-xs sm:text-base md:text-lg">Duration</td>
+                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 text-xs sm:text-base md:text-lg font-bold">2 Hours</td>
+                    <td className="p-4 sm:p-6 text-center border-l border-slate-200 text-xs sm:text-base md:text-lg font-bold">3.5 Hours</td>
                   </tr>
                   
                   {/* Actions Row */}
                   <tr className="bg-slate-50/80">
-                    <td className="p-4 sm:p-6"></td>
-                    <td className="p-8 text-center border-l border-slate-200">
-                      <Link to="/products" className="inline-flex items-center space-x-2 text-navy font-black hover:text-primary transition-colors text-lg uppercase tracking-tighter">
-                        <span>View System Details</span>
-                        <ArrowRight size={20} />
-                      </Link>
+                    <td className="p-4 sm:p-6 text-slate-400 text-xs uppercase font-black">Quick Action</td>
+                    <td className="p-4 sm:p-8 text-center border-l border-slate-200">
+                      <div className="flex flex-col space-y-3">
+                         <Link to="/products" className="inline-flex items-center justify-center space-x-2 text-navy font-black hover:text-primary transition-colors text-xs uppercase tracking-widest bg-white border border-slate-200 py-3 rounded-lg">
+                           <span>View Full Specs</span>
+                           <ArrowRight size={14} />
+                         </Link>
+                         <button 
+                           onClick={() => openBrochure('1 MWh', '1mwh')}
+                           className="inline-flex items-center justify-center space-x-2 bg-primary text-white font-black py-3 rounded-lg text-xs uppercase tracking-widest hover:bg-primary-dark transition-all"
+                         >
+                           <Download size={14} />
+                           <span>Brochure</span>
+                         </button>
+                      </div>
                     </td>
-                    <td className="p-8 text-center border-l border-slate-200">
-                      <Link to="/products" className="inline-flex items-center space-x-2 text-navy font-black hover:text-primary transition-colors text-lg uppercase tracking-tighter">
-                        <span>View System Details</span>
-                        <ArrowRight size={20} />
-                      </Link>
+                    <td className="p-4 sm:p-8 text-center border-l border-slate-200">
+                      <div className="flex flex-col space-y-3">
+                         <Link to="/products" className="inline-flex items-center justify-center space-x-2 text-navy font-black hover:text-primary transition-colors text-xs uppercase tracking-widest bg-white border border-slate-200 py-3 rounded-lg">
+                           <span>View Full Specs</span>
+                           <ArrowRight size={14} />
+                         </Link>
+                         <button 
+                           onClick={() => openBrochure('5 MWh', '5mwh')}
+                           className="inline-flex items-center justify-center space-x-2 bg-primary text-white font-black py-3 rounded-lg text-xs uppercase tracking-widest hover:bg-primary-dark transition-all"
+                         >
+                           <Download size={14} />
+                           <span>Brochure</span>
+                         </button>
+                      </div>
                     </td>
                   </tr>
                 </tbody>
@@ -100,8 +134,8 @@ const ProductCatalog = () => {
 
         {/* Features Below Product Table */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-black mb-4 text-navy">Why Choose <span className="text-primary">NXVOLTA</span></h2>
-          <p className="text-slate-600 max-w-2xl mx-auto text-lg">
+          <h2 className="text-3xl lg:text-4xl font-black mb-4 text-navy tracking-tighter uppercase">Why Choose <span className="text-primary">NXVOLTA</span></h2>
+          <p className="text-slate-600 max-w-2xl mx-auto text-lg font-medium">
             Beyond hardware, we provide a complete energy ecosystem designed for longevity and performance.
           </p>
         </div>
@@ -121,7 +155,7 @@ const ProductCatalog = () => {
                   className: `${value.icon.props.className} group-hover:text-white transition-colors duration-300` 
                 })}
               </div>
-              <h3 className="text-xl font-black mb-3 text-navy">{value.title}</h3>
+              <h3 className="text-xl font-black mb-3 text-navy uppercase tracking-tight">{value.title}</h3>
               <p className="text-slate-600 text-sm leading-relaxed font-medium">{value.desc}</p>
             </motion.div>
           ))}

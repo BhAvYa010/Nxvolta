@@ -1,126 +1,214 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Zap, Download } from 'lucide-react';
+import { ArrowRight, Zap, Download, CheckCircle2, ShieldAlert, Thermometer, Cpu, Battery, Settings, Container } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ContactModal from '../components/ContactModal';
 import commercialImg from '../assets/images/commercial-unit.jpg';
 import industrialImg from '../assets/images/industrial-container.jpg';
 
 const ProductPage = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMode, setModalMode] = useState('brochure'); // 'brochure' or 'quote'
+  const [activeProduct, setActiveProduct] = useState({ title: '', id: '' });
+
+  const openModal = (title, id, mode) => {
+    setActiveProduct({ title, id });
+    setModalMode(mode);
+    setModalOpen(true);
+  };
+
+  const products = [
+    {
+      id: '1mwh',
+      title: '1 MWh System',
+      subtitle: 'For Medium-Scale Industrial Solutions',
+      energy: '1050 kWh',
+      voltage: '480 V',
+      duration: '2 Hours',
+      weight: '~16,000 kg',
+      config: '2P150S',
+      modules: '16 Modules',
+      strings: '8',
+      cell: 'LFP (314 Ah)',
+      certifications: 'UL9540, NFPA68, NFPA855, IEC 62933, UN3536 (Under Process)',
+      bg: 'bg-white',
+      textColor: 'text-navy',
+      accentColor: 'text-primary',
+      img: commercialImg,
+      details: [
+        { label: 'Configuration', value: '2P150S', icon: <Settings className="w-4 h-4" /> },
+        { label: 'Nominal DC Voltage', value: '480 V', icon: <Zap className="w-4 h-4" /> },
+        { label: 'Battery Modules', value: '16 Modules', icon: <Container className="w-4 h-4" /> },
+        { label: 'Operating Voltage', value: '332.8 V', icon: <Zap className="w-4 h-4" /> },
+        { label: 'Energy Capacity', value: '1050 kWh', icon: <Battery className="w-4 h-4" /> },
+        { label: 'Cooling', value: 'Liquid Cooling', icon: <Thermometer className="w-4 h-4" /> }
+      ]
+    },
+    {
+      id: '5mwh',
+      title: '5 MWh System',
+      subtitle: 'For Utility-Scale Infrastructure',
+      energy: '5015 kWh',
+      voltage: '1331 V',
+      duration: '3.5 Hours',
+      weight: '~44,000 kg',
+      config: '12P416S',
+      modules: '48 Modules',
+      strings: '12',
+      cell: 'LFP (314 Ah)',
+      certifications: 'UL9540, NFPA68, NFPA855, IEC 62933, UN3536 (Under Process)',
+      bg: 'bg-navy',
+      textColor: 'text-white',
+      accentColor: 'text-primary',
+      img: industrialImg,
+      details: [
+        { label: 'Configuration', value: '12P416S', icon: <Settings className="w-4 h-4" /> },
+        { label: 'Nominal DC Voltage', value: '1331 V', icon: <Zap className="w-4 h-4" /> },
+        { label: 'Battery Modules', value: '48 Modules', icon: <Container className="w-4 h-4" /> },
+        { label: 'Operating Voltage', value: '332.8 V', icon: <Zap className="w-4 h-4" /> },
+        { label: 'Energy Capacity', value: '5015 kWh', icon: <Battery className="w-4 h-4" /> },
+        { label: 'Cooling', value: 'Liquid Cooling', icon: <Thermometer className="w-4 h-4" /> }
+      ]
+    }
+  ];
+
   return (
-    <div className="bg-white min-h-screen pt-24">
+    <div className="bg-white min-h-screen pt-24 font-sans text-navy">
+      <ContactModal 
+        isOpen={modalOpen} 
+        onClose={() => setModalOpen(false)} 
+        productTitle={activeProduct.title}
+        productId={activeProduct.id}
+        mode={modalMode}
+      />
+
       {/* Section Header */}
       <div className="bg-slate-50 py-20 border-b border-slate-100">
         <div className="container-custom">
-          <div className="max-w-3xl">
+          <div className="max-w-4xl">
             <motion.h1 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="text-5xl md:text-7xl font-black text-navy mb-6 tracking-tighter"
+              className="text-5xl md:text-8xl font-black text-navy mb-6 tracking-tighter uppercase"
             >
-              Our Energy <span className="text-primary">Storage</span> Systems
+              System <span className="text-primary italic">Specifications</span>
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-slate-500 text-xl font-medium"
+              className="text-slate-500 text-xl font-bold uppercase tracking-widest"
             >
-              Tailored solutions for every scale of energy demand. Optimized for performance, longevity, and sustainability.
+              Industrial-Grade Battery Energy Storage Solutions
             </motion.p>
           </div>
         </div>
       </div>
 
-      {/* Split Screen Section */}
-      <div className="flex flex-col md:flex-row min-h-[800px] w-full overflow-hidden">
-        
-        {/* Left Side: 500 kW */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="w-full md:w-1/2 bg-white p-8 xs:p-12 md:p-24 flex flex-col justify-center relative overflow-hidden group border-r border-slate-100"
-        >
-          <div className="relative z-10 max-w-md mx-auto md:mx-0">
-            <h2 className="text-6xl xs:text-8xl md:text-[10rem] font-black text-navy/5 mb-[-1.5rem] xs:mb-[-2rem] md:mb-[-4rem] tracking-tighter select-none">500</h2>
-            <div className="relative">
-              <h3 className="text-4xl xs:text-5xl md:text-7xl font-black text-navy mb-4 tracking-tighter">500 <span className="text-primary">kW</span></h3>
-              <p className="text-slate-500 font-bold text-lg xs:text-xl mb-8 xs:mb-12 uppercase tracking-wide">For Commercial & Backup Solutions</p>
-              
-              <ul className="space-y-4 xs:space-y-6 mb-10 xs:mb-16">
-                {['~1 MWh Energy Capacity', '≥ 90% Round-trip Efficiency', 'Modular & Compact Design', 'Seamless Grid Integration'].map((feature, i) => (
-                  <li key={i} className="flex items-center space-x-3 xs:space-x-4 text-navy font-bold text-base xs:text-lg">
-                    <div className="w-2 h-2 bg-primary rounded-full" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
+      {/* Split Screen Sections */}
+      <div className="flex flex-col lg:flex-row w-full overflow-hidden">
+        {products.map((product, index) => (
+          <motion.div 
+            key={product.id}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className={`w-full lg:w-1/2 ${product.bg} ${product.textColor} p-8 md:p-16 xl:p-24 relative overflow-hidden border-r border-slate-100 group`}
+          >
+            {/* Background Decoration */}
+            <div className={`absolute top-0 right-0 w-96 h-96 ${index === 1 ? 'bg-primary/5' : 'bg-primary/5'} rounded-full blur-[120px] -mr-32 -mt-32`}></div>
+            
+            <div className="relative z-10">
+              {/* Minimal Front Header */}
+              <div className="mb-16">
+                {index === 1 && (
+                  <div className="inline-block px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-primary text-[10px] font-black uppercase tracking-widest mb-6 backdrop-blur-sm">
+                    Utility Scale / High Capacity
+                  </div>
+                )}
+                <h2 className={`text-6xl md:text-[9rem] font-black opacity-5 mb-[-2rem] md:mb-[-4rem] tracking-tighter select-none`}>
+                  {product.id === '1mwh' ? '1.0' : '5.0'}
+                </h2>
+                <h3 className="text-5xl md:text-7xl font-black mb-4 tracking-tighter uppercase leading-none">
+                  {product.title}
+                </h3>
+                <p className={`${index === 1 ? 'text-slate-400' : 'text-slate-500'} font-black text-lg uppercase tracking-tight mb-4`}>
+                  {product.subtitle}
+                </p>
+                <div className="flex flex-wrap gap-4 text-xs font-bold uppercase tracking-widest">
+                  <span className="bg-primary/10 text-primary px-3 py-1 rounded-md border border-primary/20">Config: {product.config}</span>
+                  <span className="bg-primary/10 text-primary px-3 py-1 rounded-md border border-primary/20">DC Voltage: {product.voltage}</span>
+                </div>
+              </div>
 
+              {/* Technical Specifications Grid */}
+              <div className="mb-16">
+                <h4 className={`text-sm font-black uppercase tracking-[0.3em] mb-8 ${index === 1 ? 'text-slate-500' : 'text-slate-400'}`}>Technical Data</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8">
+                  {product.details.map((detail, i) => (
+                    <div key={i} className={`pb-4 border-b ${index === 1 ? 'border-white/5' : 'border-slate-100'} flex justify-between items-end`}>
+                      <div className="flex items-center space-x-2">
+                        <span className="text-primary">{detail.icon}</span>
+                        <span className={`text-[10px] font-black uppercase tracking-widest ${index === 1 ? 'text-slate-500' : 'text-slate-400'}`}>{detail.label}</span>
+                      </div>
+                      <span className="text-sm font-bold tracking-tight">{detail.value}</span>
+                    </div>
+                  ))}
+                  <div className={`pb-4 border-b ${index === 1 ? 'border-white/5' : 'border-slate-100'} flex justify-between items-end`}>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-primary"><Cpu className="w-4 h-4" /></span>
+                      <span className={`text-[10px] font-black uppercase tracking-widest ${index === 1 ? 'text-slate-500' : 'text-slate-400'}`}>Cycle Life</span>
+                    </div>
+                    <span className="text-sm font-bold tracking-tight">&gt; 10,000</span>
+                  </div>
+                  <div className={`pb-4 border-b ${index === 1 ? 'border-white/5' : 'border-slate-100'} flex justify-between items-end`}>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-primary"><CheckCircle2 className="w-4 h-4" /></span>
+                      <span className={`text-[10px] font-black uppercase tracking-widest ${index === 1 ? 'text-slate-500' : 'text-slate-400'}`}>Duration</span>
+                    </div>
+                    <span className="text-sm font-bold tracking-tight">{product.duration}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Performance Section */}
+              <div className="mb-16">
+                 <div className={`${index === 1 ? 'bg-white/5' : 'bg-slate-50'} p-6 rounded-2xl border ${index === 1 ? 'border-white/10' : 'border-slate-100'}`}>
+                    <div className="flex items-center space-x-2 mb-4">
+                       <ShieldAlert className="text-primary w-5 h-5" />
+                       <span className="font-black uppercase tracking-[0.2em] text-xs">Global Certifications</span>
+                    </div>
+                    <p className={`text-xs font-medium leading-relaxed ${index === 1 ? 'text-slate-400' : 'text-slate-500'}`}>
+                       {product.certifications}
+                    </p>
+                 </div>
+              </div>
+
+              {/* CTAs */}
               <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-                <Link to="/?intent=quote&product=500kw#contact" className="inline-flex items-center justify-center space-x-3 px-8 py-4 bg-navy text-white rounded-xl font-black hover:bg-primary transition-all duration-300 shadow-xl shadow-navy/10 uppercase tracking-widest text-xs">
+                <button 
+                  onClick={() => openModal(product.title, product.id, 'quote')}
+                  className="inline-flex items-center justify-center space-x-3 px-8 py-4 bg-primary text-white rounded-xl font-black hover:bg-primary-dark transition-all duration-300 shadow-xl shadow-primary/20 uppercase tracking-widest text-xs"
+                >
                   <Zap size={18} />
-                  <span>Get Best Quote</span>
-                </Link>
-                <Link to="/?intent=brochure&product=500kw#contact" className="inline-flex items-center justify-center space-x-3 px-8 py-4 bg-white border-2 border-navy/10 text-navy rounded-xl font-black hover:bg-navy hover:text-white transition-all duration-300 uppercase tracking-widest text-xs">
+                  <span>Request Quote</span>
+                </button>
+                <button 
+                  onClick={() => openModal(product.title, product.id, 'brochure')}
+                  className={`inline-flex items-center justify-center space-x-3 px-8 py-4 ${index === 1 ? 'bg-white/10 border-white/20 text-white hover:bg-white hover:text-navy' : 'bg-white border-navy/10 text-navy hover:bg-navy hover:text-white'} border-2 rounded-xl font-black transition-all duration-300 uppercase tracking-widest text-xs`}
+                >
                   <Download size={18} />
-                  <span>Download Brochure</span>
-                </Link>
+                  <span>Technical Brochure</span>
+                </button>
               </div>
             </div>
-          </div>
 
-          {/* Visual Placeholder */}
-          <div className="absolute bottom-6 right-6 xs:bottom-10 xs:right-10 w-48 xs:w-64 h-48 xs:h-64 opacity-5 xs:opacity-10 grayscale group-hover:grayscale-0 group-hover:opacity-20 transition-all duration-700 group-hover:scale-110">
-             <img src={commercialImg} alt="500kW BESS" className="w-full h-full object-contain" />
-          </div>
-        </motion.div>
-
-        {/* Right Side: 1 MW (Emphasized) */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="w-full md:w-1/2 bg-navy p-8 xs:p-12 md:p-24 flex flex-col justify-center relative overflow-hidden group"
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy to-navy-light opacity-90 transition-opacity duration-500 group-hover:opacity-100"></div>
-          
-          <div className="relative z-10 max-w-md mx-auto md:mx-0">
-            <div className="inline-block px-3 xs:px-4 py-1 rounded-full bg-primary/20 border border-primary/30 text-primary text-[10px] xs:text-xs font-black uppercase tracking-widest mb-6 xs:mb-8 backdrop-blur-sm">
-              Industrial / Scale-Ready
+            {/* Visual Image */}
+            <div className={`absolute bottom-6 right-6 md:bottom-12 md:right-12 w-64 h-64 md:w-80 md:h-80 opacity-5 grayscale group-hover:grayscale-0 group-hover:opacity-10 transition-all duration-1000 group-hover:scale-110 pointer-events-none`}>
+               <img src={product.img} alt={product.title} className="w-full h-full object-contain" />
             </div>
-            <h2 className="text-6xl xs:text-8xl md:text-[10rem] font-black text-white/5 mb-[-1.5rem] xs:mb-[-2rem] md:mb-[-4rem] tracking-tighter select-none">1000</h2>
-            <div className="relative">
-              <h3 className="text-4xl xs:text-5xl md:text-7xl font-black text-white mb-4 tracking-tighter">1 <span className="text-primary">MW</span></h3>
-              <p className="text-slate-400 font-bold text-lg xs:text-xl mb-8 xs:mb-12 uppercase tracking-wide">For Industrial & Utility Infrastructure</p>
-              
-              <ul className="space-y-4 xs:space-y-6 mb-10 xs:mb-16">
-                {['2–4 MWh High Capacity', '≥ 90–95% Peak Efficiency', 'High Power Scalability', 'Advanced Thermal Management'].map((feature, i) => (
-                  <li key={i} className="flex items-center space-x-3 xs:space-x-4 text-white font-bold text-base xs:text-lg">
-                    <div className="w-2 h-2 bg-primary rounded-full" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-                <Link to="/?intent=quote&product=1mw#contact" className="inline-flex items-center justify-center space-x-3 px-8 py-4 bg-primary text-white rounded-xl font-black hover:bg-white hover:text-navy transition-all duration-300 shadow-xl shadow-primary/20 uppercase tracking-widest text-xs">
-                  <Zap size={18} />
-                  <span>Get Best Quote</span>
-                </Link>
-                <Link to="/?intent=brochure&product=1mw#contact" className="inline-flex items-center justify-center space-x-3 px-8 py-4 bg-white/10 border-2 border-white/20 text-white rounded-xl font-black hover:bg-white hover:text-navy transition-all duration-300 uppercase tracking-widest text-xs backdrop-blur-sm">
-                  <Download size={18} />
-                  <span>Download Brochure</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Visual Placeholder */}
-          <div className="absolute bottom-6 right-6 xs:bottom-10 xs:right-10 w-56 xs:w-80 h-56 xs:h-80 opacity-5 xs:opacity-10 grayscale group-hover:grayscale-0 group-hover:opacity-30 transition-all duration-700 group-hover:scale-110">
-             <img src={industrialImg} alt="1MW BESS" className="w-full h-full object-contain" />
-          </div>
-        </motion.div>
-
+          </motion.div>
+        ))}
       </div>
     </div>
   );

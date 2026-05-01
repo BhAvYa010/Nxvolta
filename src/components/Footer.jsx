@@ -41,15 +41,11 @@ const Footer = () => {
             <ul className="space-y-4 text-sm text-slate-400">
               <li className="flex items-center space-x-2">
                 <MapPin size={16} className="text-primary" />
-                <span>Adajan, Surat, Gujarat</span>
+                <span>Surat, India</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Mail size={16} className="text-primary" />
                 <a href="mailto:nxvolta.energy@gmail.com" className="hover:text-primary transition-colors">nxvolta.energy@gmail.com</a>
-              </li>
-              <li className="flex items-center space-x-2">
-                <Phone size={16} className="text-primary" />
-                <span>+91 98765 43210</span>
               </li>
             </ul>
           </div>
