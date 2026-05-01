@@ -38,7 +38,7 @@ const ProductCatalog = () => {
 
   return (
     <section id="products" className="py-24 bg-white relative">
-      <BrochureModal 
+      <ContactModal 
         isOpen={modalOpen} 
         onClose={() => setModalOpen(false)} 
         productTitle={activeProduct.title}
