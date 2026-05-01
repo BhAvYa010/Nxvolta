@@ -77,7 +77,7 @@ const SupplierPage = () => {
     setIsSubmitting(true);
 
     const SERVICE_ID = "service_cf1az8j"; 
-    const TEMPLATE_ID = "template_77uyrdw"; 
+    const TEMPLATE_ID = "template_6p4mnha"; 
     const PUBLIC_KEY = "bC8VYNlR3dl-OGXkb";
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
@@ -267,7 +267,7 @@ const SupplierPage = () => {
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs font-black text-navy uppercase tracking-widest">Your Name</label>
-                      <input type="text" name="contact_name" required className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-navy focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold" placeholder="John Doe" />
+                      <input type="text" name="user_name" required className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-navy focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold" placeholder="John Doe" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs font-black text-navy uppercase tracking-widest">Work Email</label>

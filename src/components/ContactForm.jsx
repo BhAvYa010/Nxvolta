@@ -36,7 +36,7 @@ const ContactForm = () => {
 
     // EmailJS Configuration
     const SERVICE_ID = "service_cf1az8j"; 
-    const TEMPLATE_ID = "template_77uyrdw"; 
+    const TEMPLATE_ID = "template_1q3hzvt"; 
     const PUBLIC_KEY = "bC8VYNlR3dl-OGXkb";
 
     // Add hidden intent/product info to the form data if needed for EmailJS

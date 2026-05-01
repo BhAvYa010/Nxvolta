@@ -29,7 +29,7 @@ const ContactModal = ({ isOpen, onClose, productTitle, productId, mode = 'brochu
     setIsSubmitting(true);
 
     const SERVICE_ID = "service_cf1az8j"; 
-    const TEMPLATE_ID = "template_77uyrdw"; 
+    const TEMPLATE_ID = "template_1q3hzvt"; 
     const PUBLIC_KEY = "bC8VYNlR3dl-OGXkb";
 
     const formData = new FormData(formRef.current);
