@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MonitorCheck, Zap, Settings, Truck, ArrowRight, Download } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import BrochureModal from './BrochureModal';
+import ContactModal from './ContactModal';
 
 const ProductCatalog = () => {
   const [modalOpen, setModalOpen] = useState(false);
