@@ -229,21 +229,6 @@ const SupplierPage = () => {
         </div>
       </section>
 
-      {/* Trust Section */}
-      <section className="py-16 bg-slate-50 border-y border-slate-100 overflow-hidden">
-        <div className="container-custom">
-          <p className="text-center text-slate-400 font-bold uppercase tracking-[0.3em] text-xs mb-10">Trusted Engineering Standards</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-30 grayscale contrast-200">
-             {/* Placeholder for certifications */}
-             <div className="text-2xl font-black">UL</div>
-             <div className="text-2xl font-black">IEC</div>
-             <div className="text-2xl font-black">BIS</div>
-             <div className="text-2xl font-black">ISO 9001</div>
-             <div className="text-2xl font-black">CE</div>
-          </div>
-        </div>
-      </section>
-
       {/* Submission Form */}
       <section id="onboarding-form" className="py-24 bg-white">
         <div className="container-custom max-w-4xl">

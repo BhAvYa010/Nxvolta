@@ -9,9 +9,19 @@ const ContactModal = ({ isOpen, onClose, productTitle, productId, mode = 'brochu
   const [isSuccess, setIsSuccess] = useState(false);
 
   const triggerDownload = () => {
+    // Hidden iframe method to trigger download without opening a new tab
     const driveFileId = "1SuGMrsWNTGmzA3jkeu_t4LVNWzwoACvj";
     const downloadUrl = `https://drive.google.com/uc?id=${driveFileId}&export=download`;
-    window.open(downloadUrl, '_blank');
+    
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = downloadUrl;
+    document.body.appendChild(iframe);
+    
+    // Clean up after download starts
+    setTimeout(() => {
+      document.body.removeChild(iframe);
+    }, 2000);
   };
 
   const handleSubmit = (e) => {

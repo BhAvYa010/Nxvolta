@@ -1,18 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MonitorCheck, Zap, Settings, Truck, ArrowRight, Download } from 'lucide-react';
+import { MonitorCheck, Zap, Settings, Truck, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import ContactModal from './ContactModal';
 
 const ProductCatalog = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [activeProduct, setActiveProduct] = useState({ title: '', id: '' });
-
-  const openBrochure = (title, id) => {
-    setActiveProduct({ title, id });
-    setModalOpen(true);
-  };
-
   const deliveryFeatures = [
     {
       icon: <MonitorCheck className="w-8 h-8" />,
@@ -38,13 +29,6 @@ const ProductCatalog = () => {
 
   return (
     <section id="products" className="py-24 bg-white relative">
-      <ContactModal 
-        isOpen={modalOpen} 
-        onClose={() => setModalOpen(false)} 
-        productTitle={activeProduct.title}
-        productId={activeProduct.id}
-      />
-
       <div className="container-custom">
         {/* Product Showcase Table */}
         <div className="text-center mb-16">
@@ -94,36 +78,18 @@ const ProductCatalog = () => {
                   
                   {/* Actions Row */}
                   <tr className="bg-slate-50/80">
-                    <td className="p-4 sm:p-6 text-slate-400 text-xs uppercase font-black">Quick Action</td>
+                    <td className="p-4 sm:p-6 text-slate-400 text-[10px] uppercase font-black tracking-widest">Deep Dive</td>
                     <td className="p-4 sm:p-8 text-center border-l border-slate-200">
-                      <div className="flex flex-col space-y-3">
-                         <Link to="/products" className="inline-flex items-center justify-center space-x-2 text-navy font-black hover:text-primary transition-colors text-xs uppercase tracking-widest bg-white border border-slate-200 py-3 rounded-lg">
-                           <span>View Full Specs</span>
-                           <ArrowRight size={14} />
-                         </Link>
-                         <button 
-                           onClick={() => openBrochure('1 MWh', '1mwh')}
-                           className="inline-flex items-center justify-center space-x-2 bg-primary text-white font-black py-3 rounded-lg text-xs uppercase tracking-widest hover:bg-primary-dark transition-all"
-                         >
-                           <Download size={14} />
-                           <span>Brochure</span>
-                         </button>
-                      </div>
+                      <Link to="/products" className="inline-flex items-center justify-center space-x-2 text-navy font-black hover:text-primary transition-colors text-xs uppercase tracking-widest bg-white border-2 border-navy/5 py-4 px-6 rounded-xl w-full shadow-sm hover:shadow-md transition-all">
+                        <span>View Full Specs</span>
+                        <ArrowRight size={14} />
+                      </Link>
                     </td>
                     <td className="p-4 sm:p-8 text-center border-l border-slate-200">
-                      <div className="flex flex-col space-y-3">
-                         <Link to="/products" className="inline-flex items-center justify-center space-x-2 text-navy font-black hover:text-primary transition-colors text-xs uppercase tracking-widest bg-white border border-slate-200 py-3 rounded-lg">
-                           <span>View Full Specs</span>
-                           <ArrowRight size={14} />
-                         </Link>
-                         <button 
-                           onClick={() => openBrochure('5 MWh', '5mwh')}
-                           className="inline-flex items-center justify-center space-x-2 bg-primary text-white font-black py-3 rounded-lg text-xs uppercase tracking-widest hover:bg-primary-dark transition-all"
-                         >
-                           <Download size={14} />
-                           <span>Brochure</span>
-                         </button>
-                      </div>
+                      <Link to="/products" className="inline-flex items-center justify-center space-x-2 text-navy font-black hover:text-primary transition-colors text-xs uppercase tracking-widest bg-white border-2 border-navy/5 py-4 px-6 rounded-xl w-full shadow-sm hover:shadow-md transition-all">
+                        <span>View Full Specs</span>
+                        <ArrowRight size={14} />
+                      </Link>
                     </td>
                   </tr>
                 </tbody>
